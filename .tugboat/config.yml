@@ -9,8 +9,12 @@ services:
         - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
         - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         - apt-get install -y nodejs yarn calibre
+        - apt-get install bsd-mailx
       build:
         - yarn install
         - yarn build
         - yarn pdf
         - ln -snf "${TUGBOAT_ROOT}/_book" "${DOCROOT}"
+        - cat .tugboat/tugboat.txt | mail -s "[1] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" tugboat@example.com
+        - cat .tugboat/tugboat.txt | mail -s "[2] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" tugboat@example.com
+        - cat .tugboat/tugboat.txt
