@@ -15,6 +15,5 @@ services:
         - yarn build
         - yarn pdf
         - ln -snf "${TUGBOAT_ROOT}/_book" "${DOCROOT}"
-        - cat .tugboat/tugboat.txt | mail -s "[1] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" tugboat@example.com
-        - cat .tugboat/tugboat.txt | mail -s "[2] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" tugboat@example.com
-        - cat .tugboat/tugboat.txt
+        - cat .tugboat/tugboat.txt | mail -s "[1] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" --from=from@example.org to@example.org
+        - cat .tugboat/tugboat.txt | mail -s "[2] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" --from=from@example.org to@example.org
